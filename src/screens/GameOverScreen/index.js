@@ -9,12 +9,14 @@ export const GameOverScreen = (props) => {
     return (
         <SafeAreaView style={styles.container}>
             <View>
-                <Text style={styles.text}>Game Over</Text>
+                <Text style={styles.text}> Nailed It! </Text>
+                <Text style={styles.text}>🎉 {props.userNumber} 🎉</Text>
+                <Text style={styles.subtext}>No of Rounds: {props.numberOfGuess}</Text>
             </View>
             <View style={styles.btnContainer}>
                 <TouchableNativeFeedback
                     background={TouchableNativeFeedback.SelectableBackground()}
-                    onPress={() => { }}
+                    onPress={props.onRestart}
                 >
                     <View style={[styles.btnView]}>
                         <Text style={[styles.btn, styles.reset]}>Restart</Text>
@@ -34,11 +36,16 @@ const styles = StyleSheet.create({
     text: {
         textAlign: "center",
         fontWeight: "bold",
-        marginHorizontal: "7%",
-        fontSize: 80,
-        marginBottom: "25%",
-        marginTop: "25%",
+        marginBottom: '5%',
+        marginTop: '10%',
+        fontSize: 70,
         borderRadius: 20
+    },
+    subtext: {
+        fontSize: 22,
+        textAlign: "center",
+        marginBottom: "10%",
+        marginTop: '10%'
     },
     btnView: {
         borderRadius: 20,
