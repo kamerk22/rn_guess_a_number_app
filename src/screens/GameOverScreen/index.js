@@ -15,7 +15,7 @@ export const GameOverScreen = (props) => {
             </View>
             <View style={styles.btnContainer}>
                 <TouchableNativeFeedback
-                    background={TouchableNativeFeedback.SelectableBackground()}
+                    // background={TouchableNativeFeedback.SelectableBackground()}
                     onPress={props.onRestart}
                 >
                     <View style={[styles.btnView]}>

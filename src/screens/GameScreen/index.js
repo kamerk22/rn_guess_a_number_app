@@ -52,7 +52,7 @@ export const GameScreen = (props) => {
                 <Text style={styles.text}>{currentGuess}</Text>
                 <View style={styles.btnContainer}>
                     <TouchableNativeFeedback
-                        background={TouchableNativeFeedback.SelectableBackground()}
+                        // background={TouchableNativeFeedback.SelectableBackground()}
                         onPress={nextGuessHandle.bind(this, 'LOW')}
                     >
                         <View style={[styles.btnView, styles.reset]}>
@@ -60,7 +60,7 @@ export const GameScreen = (props) => {
                         </View>
                     </TouchableNativeFeedback>
                     <TouchableNativeFeedback
-                        background={TouchableNativeFeedback.SelectableBackground()}
+                        // background={TouchableNativeFeedback.SelectableBackground()}
                         onPress={nextGuessHandle.bind(this, 'HIGH')}
                     >
                         <View style={[styles.btnView, styles.confirm]}>

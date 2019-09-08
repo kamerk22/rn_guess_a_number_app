@@ -57,7 +57,7 @@ export const StartGameScreen = props => {
 
             <View style={styles.btnContainer}>
               <TouchableNativeFeedback
-                background={TouchableNativeFeedback.SelectableBackground()}
+                // background={TouchableNativeFeedback.SelectableBackground()}
                 onPress={resetInputHandler}
               >
                 <View style={[styles.btnView, styles.reset]}>
@@ -65,7 +65,7 @@ export const StartGameScreen = props => {
                 </View>
               </TouchableNativeFeedback>
               <TouchableNativeFeedback
-                background={TouchableNativeFeedback.SelectableBackground()}
+                // background={TouchableNativeFeedback.SelectableBackground()}
                 onPress={confirmInputHandler}
               >
                 <View style={[styles.btnView, styles.confirm]}>

@@ -1,12 +1,15 @@
 {
   "expo": {
-    "name": "rn_guess_the_no_app",
+    "name": "Guess a Number App",
     "slug": "rn_guess_the_no_app",
     "privacy": "public",
     "sdkVersion": "34.0.0",
     "platforms": [
       "android"
     ],
+    "android": {
+      "package": "com.deskmendesign.guessumberapp"
+    },
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

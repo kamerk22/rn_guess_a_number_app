@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Header } from "./src/components";
 import { StartGameScreen, GameScreen, GameOverScreen } from "./src/screens";
 
@@ -32,9 +32,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Header title="Guess a Number" />
+      <Header title="Guess The Number" />
       {content}
-      {/* <GameOverScreen numberOfGuess={12} userNumber={22} /> */}
     </View>
   );
 }
