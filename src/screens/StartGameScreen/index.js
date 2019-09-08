@@ -1,42 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   View,
   StyleSheet,
   Text,
   TextInput,
-  Button,
   SafeAreaView,
-  TouchableNativeFeedback
+  TouchableNativeFeedback,
+  TouchableWithoutFeedback,
+  Keyboard
 } from "react-native";
 import Constants from "expo-constants";
+import color from "./../../constants/color";
 
 export const StartGameScreen = props => {
+  const [enteredValue, setEnteredValue] = useState('');
+  const [confirmed, setConfirmed] = useState(false);
+  const [selectedNumber, setSelectedNumber] = useState('');
+
+  const enterdInputHandler = number => {
+    setEnteredValue(number.replace(/[^0-9]/g, ''))
+  }
+
+  const resetInputHandler = () => {
+    setEnteredValue();
+    setConfirmed(false);
+  }
+
+  const confirmInputHandler = () => {
+    setConfirmed(true);
+    setSelectedNumber(parseInt(enteredValue));
+    setEnteredValue('');
+
+  }
+
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.screen}>
-        <View style={styles.inputContainer}>
-          <Text style={styles.title}>Choose a Number</Text>
-          <TextInput keyboardType="number-pad" style={styles.textInput} />
-          <View style={styles.btnContainer}>
-            <TouchableNativeFeedback
-              background={TouchableNativeFeedback.SelectableBackground()}
-            >
-              <View style={[styles.btnView, styles.reset]}>
-                <Text style={[styles.btn]}>RESET</Text>
-              </View>
-            </TouchableNativeFeedback>
-            <TouchableNativeFeedback
-              background={TouchableNativeFeedback.SelectableBackground()}
-            >
-              <View style={[styles.btnView, styles.confirm]}>
-                <Text style={[styles.btn, styles.white]}>START</Text>
-              </View>
-            </TouchableNativeFeedback>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.screen}>
+          <View style={styles.inputContainer}>
+            <Text style={styles.title}>Choose a Number</Text>
+            <TextInput
+              keyboardType="number-pad"
+              style={styles.textInput}
+              blurOnSubmit
+              autoCorrect={false}
+              maxLength={2}
+              onChangeText={enterdInputHandler}
+              value={enteredValue} />
+
+            <View style={styles.btnContainer}>
+              <TouchableNativeFeedback
+                background={TouchableNativeFeedback.SelectableBackground()}
+                onPress={resetInputHandler}
+              >
+                <View style={[styles.btnView, styles.reset]}>
+                  <Text style={[styles.btn]}>RESET</Text>
+                </View>
+              </TouchableNativeFeedback>
+              <TouchableNativeFeedback
+                background={TouchableNativeFeedback.SelectableBackground()}
+              >
+                <View style={[styles.btnView, styles.confirm]}>
+                  <Text style={[styles.btn, styles.white]}>START</Text>
+                </View>
+              </TouchableNativeFeedback>
+            </View>
           </View>
         </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -79,7 +112,7 @@ const styles = StyleSheet.create({
     color: "black"
   },
   confirm: {
-    backgroundColor: "#000DFF"
+    backgroundColor: color.brand
   },
   white: {
     color: "white"
