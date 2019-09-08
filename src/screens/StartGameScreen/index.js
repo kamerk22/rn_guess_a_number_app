@@ -8,7 +8,8 @@ import {
   SafeAreaView,
   TouchableNativeFeedback,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
+  Alert
 } from "react-native";
 import Constants from "expo-constants";
 import color from "./../../constants/color";
@@ -28,9 +29,14 @@ export const StartGameScreen = props => {
   }
 
   const confirmInputHandler = () => {
+    const chooseNumber = parseInt(enteredValue);
+    if (isNaN(chooseNumber) || chooseNumber <= 0 || chooseNumber > 99) {
+      Alert.alert('Invalid Number', 'Number has to be between 1 and 99.', [{ text: 'Okay', style: 'destructive', onPress: resetInputHandler }]);
+      return;
+    }
     setConfirmed(true);
-    setSelectedNumber(parseInt(enteredValue));
-    setEnteredValue('');
+    setSelectedNumber(chooseNumber);
+    props.onStartGame(chooseNumber)
 
   }
 
@@ -55,11 +61,12 @@ export const StartGameScreen = props => {
                 onPress={resetInputHandler}
               >
                 <View style={[styles.btnView, styles.reset]}>
-                  <Text style={[styles.btn]}>RESET</Text>
+                  <Text style={[styles.btn, styles.reset]}>RESET</Text>
                 </View>
               </TouchableNativeFeedback>
               <TouchableNativeFeedback
                 background={TouchableNativeFeedback.SelectableBackground()}
+                onPress={confirmInputHandler}
               >
                 <View style={[styles.btnView, styles.confirm]}>
                   <Text style={[styles.btn, styles.white]}>START</Text>
@@ -109,7 +116,8 @@ const styles = StyleSheet.create({
     margin: 10
   },
   reset: {
-    color: "black"
+    color: "#22292F",
+    backgroundColor: '#F1F5F8'
   },
   confirm: {
     backgroundColor: color.brand
